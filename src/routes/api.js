@@ -1,13 +1,15 @@
 const express = require('express')
+const authentication = require("../middleware/auth")
 
 const Controllerapi = require("../controllers/api")
 const router = express.Router();
 const controllers = new Controllerapi();
 
-router.get("/api/Dogs/", controllers.Mostrar)
 router.post("/api/Dogs", controllers.Adicionar)
-router.put("/api/Dogs/:id", controllers.Alterar)
-router.delete("/api/Dogs/:id", controllers.Deletar)
+
+router.get("/api/Dogs/",authentication, controllers.Mostrar)
+router.put("/api/Dogs/:id",authentication, controllers.Alterar)
+router.delete("/api/Dogs/:id",authentication, controllers.Deletar)
 
 
 

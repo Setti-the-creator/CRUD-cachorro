@@ -1,6 +1,7 @@
 const database = require('../config/database')
+const bcrypt = require("bcrypt")
 const modelExercicio = require('../models/api')
-
+const salt = 12;
 // const model = new modelExercicio()
 class Serviceapi 
 {
@@ -15,7 +16,8 @@ class Serviceapi
         {
             throw new Error("Favor preencher todos os dados obrigatórios.")
         }
-    return modelExercicio.create({name, howold, race})
+        const hashSenha = await bcrypt.hash( name,salt)
+    return modelExercicio.create({name: hashSenha, howold, race})
     }
 
     async Alterar(id, name, howold, race)
@@ -30,9 +32,15 @@ class Serviceapi
             {
                 throw new Error("Cachorro nao encontrado")
             }
-        dog.name = name  || dog.name
-        dog.howold = howold  || dog.howold
-        dog.race = race  || dog.race
+        dog.name = name 
+        ? await bcrypt.hash( name,salt)
+         : dog.name
+        dog.howold = howold
+        ? howold
+        :dog.howold
+        dog.race = race
+        ? race
+        : dog.race
 
         dog.save()
         return dog
