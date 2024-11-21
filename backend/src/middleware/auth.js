@@ -25,6 +25,7 @@ function authentication (req,res,next)
         
          console
         .log(decoded)
+        req.session = decoded
 
         next()
 

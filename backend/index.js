@@ -1,11 +1,15 @@
 const express = require("express")
-const router = require("./src/routes/api")
+const routerCachorro = require("./src/routes/Cachorro")
+const routerCliente = require("./src/routes/Cliente")
 const database = require('./src/config/database')
+const cors = require('cors')
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
-app.use(router)
+app.use("/cachorro", routerCachorro)
+app.use("/cliente",routerCliente)
 
 //criar as rotas
 

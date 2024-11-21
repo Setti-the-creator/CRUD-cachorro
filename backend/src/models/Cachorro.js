@@ -20,7 +20,7 @@ class ModelExercicio
 
         race: {
             type: database.db.Sequelize.STRING
-        },
+        },  
     })
    }
 }

@@ -1,13 +1,13 @@
-const Serviceapi = require("../services/api")
-const servico = new Serviceapi()
+const Servicecachorro = require("../services/Cachorro")
+const servico = new Servicecachorro()
 
-class Controllerapi
+class ControllerCachorro
 {
     
     async Mostrar(req,res)
     {
         try{
-            const index = req.params.index
+            const id = req.params.index
             
             const result = await servico.Mostrar()
             
@@ -74,4 +74,4 @@ class Controllerapi
 
 }
 
-module.exports = Controllerapi;
+module.exports = ControllerCachorro;

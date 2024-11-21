@@ -1,14 +1,14 @@
 const database = require('../config/database')
 const bcrypt = require("bcrypt")
-const modelExercicio = require('../models/api')
+const modelExercicio = require('../models/Cachorro')
 const salt = 12;
 // const model = new modelExercicio()
-class Serviceapi 
+class Servicecachorro 
 {
     
     async Mostrar()
      {
-     return modelExercicio.findAll()
+     return modelCliente.findAll()
      }
     async Adicionar(name,howold,race)
     {
@@ -57,4 +57,4 @@ class Serviceapi
     
 }
 
-module.exports = Serviceapi;
+module.exports = Servicecachorro;
